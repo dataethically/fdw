@@ -28,15 +28,15 @@ IMPORT FOREIGN SCHEMA public
   INTO traffic_data;
 
 -- Grant access permissions for PostgREST api schema
---GRANT USAGE ON SCHEMA traffic_data TO web_anon;
---GRANT SELECT ON ALL TABLES IN SCHEMA traffic_data TO web_anon;
+GRANT USAGE ON SCHEMA traffic_data TO web_anon;
+GRANT SELECT ON ALL TABLES IN SCHEMA traffic_data TO web_anon;
 
 -- Create views in the api schema
 CREATE OR REPLACE VIEW api.traffic_data AS
-  SELECT * FROM traffic_data.traffic_measurements;
+  SELECT * FROM traffic_data.traffic_flow;
 
 CREATE OR REPLACE VIEW api.traffic_locations AS
-  SELECT * FROM traffic_data.traffic_locations;
+  SELECT * FROM traffic_data.locations;
 
 -- Test query (uncomment to verify)
 -- SELECT * FROM traffic_data.traffic_measurements LIMIT 5;
